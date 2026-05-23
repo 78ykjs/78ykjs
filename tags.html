@@ -1,1 +1,386 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>标签 - 数字花园</title><link rel="stylesheet" href="assets/css/garden.css"></head><body><div class="shell"><aside class="sidebar"><a class="brand" href="index.html"><strong>数字花园</strong><span>Tags</span></a><nav class="nav"><a href="index.html">首页</a><a href="library.html">所有笔记</a><a href="graph.html">知识图谱</a><a class="active" href="tags.html">标签</a></nav></aside><main class="main"><header class="topbar"><a href="index.html">数字花园</a><nav><a href="random.html">随机</a><a href="archive.html">归档</a></nav></header><section class="hero"><div class="kicker">Tags</div><h1>标签</h1><p class="lead">用标签把分散的笔记串起来。</p></section><div class="grid"><a class="card" href="library.html"><h3>域适应</h3><p>1 篇相关笔记</p></a><a class="card" href="library.html"><h3>PyTorch</h3><p>1 篇相关笔记</p></a><a class="card" href="library.html"><h3>论文</h3><p>1 篇相关笔记</p></a><a class="card" href="library.html"><h3>调试</h3><p>1 篇相关笔记</p></a><a class="card" href="library.html"><h3>阅读</h3><p>1 篇相关笔记</p></a><a class="card" href="library.html"><h3>复盘</h3><p>1 篇相关笔记</p></a></div></main></div></body></html>
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>标签与分类 - 数字花园</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e9e1dc",
+                        "secondary-fixed": "#d3e8d5",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb5a1",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-container": "#f5ece7",
+                        "surface-bright": "#fff8f5",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb77b",
+                        "on-tertiary-fixed-variant": "#6d3900",
+                        "surface-container-high": "#efe6e2",
+                        "primary-fixed": "#ffdbd1",
+                        "surface-tint": "#974730",
+                        "secondary-fixed-dim": "#b7ccb9",
+                        "on-primary-fixed-variant": "#79301b",
+                        "on-error": "#ffffff",
+                        "primary-container": "#b35c44",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#546758",
+                        "on-secondary-fixed-variant": "#394b3d",
+                        "on-tertiary-container": "#fffcff",
+                        "inverse-surface": "#34302c",
+                        "on-tertiary-fixed": "#2e1500",
+                        "inverse-on-surface": "#f8efea",
+                        "error": "#ba1a1a",
+                        "outline": "#88726d",
+                        "on-primary-fixed": "#3b0900",
+                        "on-secondary-fixed": "#0e1f13",
+                        "background": "#fff8f5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a5662b",
+                        "secondary": "#506354",
+                        "primary-fixed-dim": "#ffb5a1",
+                        "tertiary": "#884e14",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#d0e5d2",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-surface-variant": "#55433e",
+                        "on-background": "#1e1b18",
+                        "outline-variant": "#dbc1ba",
+                        "on-surface": "#1e1b18",
+                        "surface-dim": "#e1d8d4",
+                        "tertiary-fixed": "#ffdcc2",
+                        "primary": "#94442e",
+                        "surface": "#fff8f5",
+                        "on-primary-container": "#fffcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max-width": "900px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Noto Serif SC"],
+                        "headline-lg": ["Noto Serif SC"],
+                        "display-lg": ["Noto Serif SC"],
+                        "body-lg": ["Noto Sans SC"],
+                        "body-md": ["Noto Sans SC"],
+                        "headline-lg-mobile": ["Noto Serif SC"],
+                        "label-md": ["Noto Sans SC"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fff8f5;
+            color: #1e1b18;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .tag-cloud-item {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .tag-cloud-item:hover {
+            transform: scale(1.05);
+        }
+        .glass-panel {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex h-screen w-sidebar-width fixed left-0 top-0 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/20 flex-col p-6 gap-4 z-50">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-tertiary-container overflow-hidden">
+<img alt="用户头像" class="w-full h-full object-cover" data-alt="A detailed digital painting of a sophisticated Chinese scholar's workspace, featuring a close-up of a warm wooden desk with calligraphy brushes and an open notebook. The lighting is soft and golden, coming from a nearby window, creating a serene and academic mood. The color palette is dominated by warm ochres, deep greens, and subtle earthy browns, matching a digital garden aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA71XoG-XKrLdl38ZweXHOAmnPhPp5WWKHLonjDFP-7EJo2KOvBGTP3tpCP99UlO6u0QVy2R_yQcV5Xskn62XXb1JRtDzeKTJE3xrZGXwLmfMhAFiBhRfcXWfClDDvOR518ErpO9iwN_95eToUBx1pVNpQIZCg7XrpYvGIzZjiO3NN3SyREIRszY7vj3V-kNJRK0hP9L_FpS6CIwow9yl0_4qg1ASzVjzbY-CyspYZ0M4MLT75gJngPxemg3ltNXRQATLVnirzmqOtd"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">书斋主人</h3>
+<p class="font-label-md text-label-md text-on-surface-variant/70">随手记，时常温</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>首页</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span>知识库</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span>知识图谱</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sell</span>
+<span>标签</span>
+</a>
+</nav>
+<div class="mt-4 px-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span>新建笔记</span>
+</button>
+</div>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span>回收站</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>帮助</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar-width min-h-screen">
+<!-- TopNavBar (Mobile Responsive) -->
+<header class="sticky top-0 w-full bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-sm border-b border-outline-variant/30 z-40">
+<div class="flex justify-between items-center px-4 md:px-margin-desktop h-16 max-w-[900px] mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">数字花园</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">随机</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">归档</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">更新</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Content Canvas -->
+<div class="max-w-[900px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Tag Ecosystem Title -->
+<section class="mb-12">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-8 h-[2px] bg-primary"></span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">标签生态系统</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                    这里是知识的繁茂生长地。每一个标签都是思想的一个触角，通过交叉引用连接起不同的思维维度。
+                </p>
+</section>
+<!-- Tag Cloud - Organic Layout -->
+<section class="mb-16 p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 relative overflow-hidden">
+<!-- Abstract Decorative Elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary-fixed/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
+<div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-8 relative z-10">
+<a class="tag-cloud-item group flex flex-col items-center" href="#">
+<span class="px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-headline-md text-[28px] shadow-sm">设计系统</span>
+<span class="mt-2 font-label-md text-label-md text-on-surface-variant/60">42 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full font-body-lg text-[20px]">用户体验</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">28 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-4 py-1 bg-surface-variant text-on-surface-variant rounded-full font-body-md text-[16px]">极简主义</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">15 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-5 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-headline-md text-[22px]">数字园艺</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">31 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-3 py-1 border border-outline-variant text-on-surface-variant rounded-full font-body-md text-[14px]">阅读笔记</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">12 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-4 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full font-body-lg text-[18px]">CSS架构</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">22 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-4 py-2 bg-primary-fixed-dim text-on-primary-fixed-variant rounded-full font-headline-md text-[24px]">前端开发</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">35 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-3 py-1 bg-secondary-fixed-dim text-on-secondary-fixed-variant rounded-full font-body-md text-[15px]">心理学</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">10 篇</span>
+</a>
+<a class="tag-cloud-item flex flex-col items-center" href="#">
+<span class="px-4 py-1.5 bg-surface-variant text-on-surface-variant rounded-full font-body-lg text-[19px]">工作流</span>
+<span class="mt-1 font-label-md text-label-md text-on-surface-variant/60">18 篇</span>
+</a>
+</div>
+</section>
+<!-- Filtered Content Section -->
+<section>
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-lg mb-3">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">sell</span>
+<span class="font-label-md text-label-md font-bold">已选标签</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-baseline gap-2">
+                            #设计系统 
+                            <span class="font-body-md text-body-md text-on-surface-variant font-normal">(42 篇笔记)</span>
+</h3>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex items-center gap-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                            最新发布
+                        </button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex items-center gap-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid of Notes -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Note Card 1 -->
+<article class="group bg-surface-container rounded-xl border border-outline-variant/10 hover:border-primary/30 transition-all duration-300 flex flex-col p-6 h-full cursor-pointer">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[10px] text-tertiary font-bold tracking-widest">2024.05.12</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-md text-[12px] text-on-surface-variant/60">8 MIN READ</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-surface mb-3 group-hover:text-primary transition-colors leading-snug">
+                            从零开始构建：响应式色彩系统的数学逻辑
+                        </h4>
+<p class="font-body-md text-body-md text-on-surface-variant/80 line-clamp-3 mb-6">
+                            探讨如何利用 OKLCH 色彩空间与 CSS 变量构建一个能够自动适应环境光的动态设计系统...
+                        </p>
+<div class="mt-auto flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[12px] font-medium">设计系统</span>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded text-[12px] font-medium">CSS</span>
+</div>
+</article>
+<!-- Note Card 2 (Image Focused) -->
+<article class="group bg-surface-container rounded-xl border border-outline-variant/10 hover:border-primary/30 transition-all duration-300 flex flex-col overflow-hidden h-full cursor-pointer md:col-span-2 lg:col-span-1">
+<div class="h-40 overflow-hidden relative">
+<img alt="设计系统文章插图" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end, minimalist architectural interior with clean lines and soft lighting, representing structured design systems. The image has a warm, cream-toned aesthetic with subtle shadows and natural textures like light wood and limestone. The composition is asymmetrical and balanced, evoking a sense of calm and order, perfectly aligned with a professional UI design for a digital garden." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrNV0k9D4zWambfT13nHzVxpyCn31e8OW9aW2vmW6RRkPQBTprKP66BnHzR3vQw4WlzErznQTLzYIYDBZKoyiPbgcNrR22gBUIGNwjELZUR-ZRYt2gCa-ScWJ97UGKoIYZzZ_InZY4dP_UayPq2EQJtqQt_4SQTIfIslV7sZpG4uwSrZgkMI5R0j1aGCfzkkYtvYxw_gda_GIDlUhCFCjh_fbFdwD33y3oZ0OnVVjsr3p43IpUTbns9J_OBk7RpWKFKtAVA17X08oV"/>
+<div class="absolute top-3 left-3 px-3 py-1 glass-panel bg-white/20 text-white text-[12px] rounded-full backdrop-blur-md">
+                                置顶
+                            </div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-[20px] text-on-surface mb-3 group-hover:text-primary transition-colors leading-snug">
+                                原子设计与组件解耦的深度实践
+                            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant/80 line-clamp-2">
+                                在大型团队中，如何平衡组件的灵活性与一致性？分享我们的原子化之路。
+                            </p>
+</div>
+</article>
+<!-- Note Card 3 -->
+<article class="group bg-surface-container rounded-xl border border-outline-variant/10 hover:border-primary/30 transition-all duration-300 flex flex-col p-6 h-full cursor-pointer">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[10px] text-tertiary font-bold tracking-widest">2024.04.30</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-md text-[12px] text-on-surface-variant/60">12 MIN READ</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-surface mb-3 group-hover:text-primary transition-colors leading-snug">
+                            无障碍设计不只是一个 Checkbox
+                        </h4>
+<div class="pl-4 border-l-2 border-primary/30 mb-6 bg-surface-variant/30 py-2">
+<p class="font-body-md text-body-md italic text-on-surface-variant/70">
+                                "真正的设计系统应该是包容的，不仅是视觉的共鸣，更是体验的平等。"
+                            </p>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[12px] font-medium">设计系统</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[12px] font-medium">无障碍</span>
+</div>
+</article>
+<!-- Note Card 4 -->
+<article class="group bg-surface-container rounded-xl border border-outline-variant/10 hover:border-primary/30 transition-all duration-300 flex flex-col p-6 h-full cursor-pointer">
+<h4 class="font-headline-md text-[20px] text-on-surface mb-3 group-hover:text-primary transition-colors leading-snug">
+                            跨平台组件库的统一性：从 Web 到原生
+                        </h4>
+<p class="font-body-md text-body-md text-on-surface-variant/80 line-clamp-3 mb-6">
+                            如何使用 Design Tokens 搭建一套通用的语义化色彩和间距系统，让多端开发不再痛苦。
+                        </p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[12px] font-medium">设计系统</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+</div>
+</article>
+<!-- Empty Placeholder for "Load More" feeling -->
+<div class="flex items-center justify-center border-2 border-dashed border-outline-variant/30 rounded-xl p-8 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="text-center">
+<span class="material-symbols-outlined text-[32px] text-outline-variant group-hover:text-primary mb-2 transition-colors">expand_more</span>
+<p class="font-label-md text-label-md text-on-surface-variant/50">加载更多笔记</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-outline-variant/10 flex flex-col items-center justify-center gap-4 max-w-[900px] mx-auto text-on-surface-variant/60 font-label-md text-label-md">
+<div class="flex gap-8 mb-2">
+<a class="hover:text-primary transition-colors" href="#">隐私政策</a>
+<a class="hover:text-primary transition-colors" href="#">使用手册</a>
+<a class="hover:text-primary transition-colors" href="#">开源协议</a>
+</div>
+<p>© 2024 数字花园 · 保持好奇心</p>
+</footer>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform">add</span>
+</button>
+<script>
+        // Simple micro-interaction for tag cloud
+        document.querySelectorAll('.tag-cloud-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const text = item.querySelector('span:first-child');
+                text.style.boxShadow = '0 10px 15px -3px rgba(148, 68, 46, 0.1), 0 4px 6px -2px rgba(148, 68, 46, 0.05)';
+            });
+            item.addEventListener('mouseleave', () => {
+                const text = item.querySelector('span:first-child');
+                text.style.boxShadow = '';
+            });
+        });
+
+        // Search logic placeholder
+        const searchBtn = document.querySelector('button .material-symbols-outlined:contains("search")');
+        if (searchBtn) {
+            searchBtn.parentElement.addEventListener('click', () => {
+                alert('正在唤醒花园搜索模块...');
+            });
+        }
+    </script>
+</body></html>

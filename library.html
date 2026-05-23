@@ -1,1 +1,358 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>所有笔记 - 数字花园</title><link rel="stylesheet" href="assets/css/garden.css"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet"></head><body><div class="shell"><aside class="sidebar"><a class="brand" href="index.html"><strong>数字花园</strong><span>所有笔记</span></a><div class="nav-group"><small>导航</small><nav class="nav"><a href="index.html">首页</a><a class="active" href="library.html">所有笔记</a><a href="graph.html">知识图谱</a><a href="tags.html">标签</a></nav></div><div class="nav-group"><small>分类</small><nav class="nav"><a href="deep-learning.html">深度学习</a><a href="engineering.html">工程实践</a><a href="reading.html">读书笔记</a><a href="papers.html">论文精读</a><a href="essays.html">随笔</a></nav></div></aside><main class="main"><header class="topbar"><a href="index.html">数字花园</a><nav><a href="random.html">随机</a><a href="archive.html">归档</a><a href="updates.html">更新</a></nav></header><section class="hero"><div class="kicker">Library</div><h1>所有笔记</h1><p class="lead">搜索、筛选并进入你的知识条目。这里先放一个静态索引，后续可以继续接 Markdown 或 Quartz。</p></section><input class="search" data-search placeholder="搜索笔记、标签、分类"><div class="filters"><button class="filter active" data-filter="全部">全部</button><button class="filter" data-filter="深度学习">深度学习</button><button class="filter" data-filter="工程实践">工程实践</button><button class="filter" data-filter="论文精读">论文精读</button><button class="filter" data-filter="读书笔记">读书笔记</button><button class="filter" data-filter="随笔">随笔</button></div><section class="note-list" data-notes></section></main></div><script src="assets/js/garden.js"></script></body></html>
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>知识库 | 数字花园</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&amp;family=Noto+Sans+SC:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e9e1dc",
+                    "secondary-fixed": "#d3e8d5",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb5a1",
+                    "surface-container-low": "#fbf2ed",
+                    "surface-container": "#f5ece7",
+                    "surface-bright": "#fff8f5",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#ffb77b",
+                    "on-tertiary-fixed-variant": "#6d3900",
+                    "surface-container-high": "#efe6e2",
+                    "primary-fixed": "#ffdbd1",
+                    "surface-tint": "#974730",
+                    "secondary-fixed-dim": "#b7ccb9",
+                    "on-primary-fixed-variant": "#79301b",
+                    "on-error": "#ffffff",
+                    "primary-container": "#b35c44",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#546758",
+                    "on-secondary-fixed-variant": "#394b3d",
+                    "on-tertiary-container": "#fffcff",
+                    "inverse-surface": "#34302c",
+                    "on-tertiary-fixed": "#2e1500",
+                    "inverse-on-surface": "#f8efea",
+                    "error": "#ba1a1a",
+                    "outline": "#88726d",
+                    "on-primary-fixed": "#3b0900",
+                    "on-secondary-fixed": "#0e1f13",
+                    "background": "#fff8f5",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#a5662b",
+                    "secondary": "#506354",
+                    "primary-fixed-dim": "#ffb5a1",
+                    "tertiary": "#884e14",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#d0e5d2",
+                    "surface-container-highest": "#e9e1dc",
+                    "on-surface-variant": "#55433e",
+                    "on-background": "#1e1b18",
+                    "outline-variant": "#dbc1ba",
+                    "on-surface": "#1e1b18",
+                    "surface-dim": "#e1d8d4",
+                    "tertiary-fixed": "#ffdcc2",
+                    "primary": "#94442e",
+                    "surface": "#fff8f5",
+                    "on-primary-container": "#fffcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max-width": "900px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "sidebar-width": "280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Noto Serif SC"],
+                    "headline-lg": ["Noto Serif SC"],
+                    "display-lg": ["Noto Serif SC"],
+                    "body-lg": ["Noto Sans SC"],
+                    "body-md": ["Noto Sans SC"],
+                    "headline-lg-mobile": ["Noto Serif SC"],
+                    "label-md": ["Noto Sans SC"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f5;
+            color: #1e1b18;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .knowledge-node {
+            transition: all 0.3s ease;
+        }
+        .knowledge-node:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(148, 68, 46, 0.4));
+        }
+        /* Custom thin border for paper effect */
+        .border-paper {
+            border-bottom: 1px solid rgba(136, 114, 109, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar Shell -->
+<nav class="h-screen w-sidebar-width fixed left-0 top-0 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/20 flex flex-col p-6 gap-4 hidden md:flex">
+<div class="mb-6">
+<h1 class="font-headline-md text-headline-md text-on-surface">书斋主人</h1>
+<p class="font-label-md text-label-md text-on-surface-variant/70">随手记，时常温</p>
+</div>
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>首页</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold font-label-md text-label-md Active: scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span>知识库</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span>知识图谱</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">sell</span>
+<span>标签</span>
+</a>
+<div class="mt-8 mb-2 px-4 text-xs font-bold text-outline uppercase tracking-widest">文件夹</div>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-tertiary">folder</span>
+<span>项目</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-secondary">folder</span>
+<span>资源</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-xl transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-outline">archive</span>
+<span>归档</span>
+</a>
+</div>
+<button class="bg-primary text-on-primary py-3 px-4 rounded-full flex items-center justify-center gap-2 font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+<span>新建笔记</span>
+</button>
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant/10 pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span>回收站</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>帮助</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-sm border-b border-outline-variant/30 z-30 md:ml-sidebar-width md:w-[calc(100%-280px)]">
+<div class="flex justify-between items-center px-6 md:px-margin-desktop h-16 max-w-[900px] mx-auto">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md text-primary dark:text-inverse-primary md:hidden">数字花园</span>
+<nav class="hidden md:flex gap-6 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">随机</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">归档</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">更新</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 flex-1 justify-end max-w-md">
+<div class="relative w-full max-w-[240px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-highest/50 border-none rounded-full py-1.5 pl-10 pr-4 text-label-md focus:ring-1 focus:ring-primary/30" placeholder="搜索笔记..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-all Active: scale-95 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:ml-sidebar-width min-h-screen">
+<div class="max-w-[900px] mx-auto px-6 md:px-margin-desktop py-12">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">所有笔记</h2>
+<p class="text-on-surface-variant font-body-md">共 124 篇记录 · 在温故知新中成长</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container px-4 py-2 rounded-xl">
+<span class="text-label-md text-outline">排序方式:</span>
+<button class="text-label-md font-bold text-primary flex items-center gap-1">
+                        按更新时间 <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Knowledge Garden Layout (Bento-style Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Knowledge Graph Preview Card -->
+<div class="md:col-span-1 bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-label-md uppercase tracking-widest text-outline">知识图谱预览</h3>
+<span class="material-symbols-outlined text-primary text-sm">open_in_new</span>
+</div>
+<div class="aspect-square relative bg-surface-container-highest/30 rounded-xl overflow-hidden flex items-center justify-center">
+<!-- Abstract Knowledge Graph Mockup -->
+<div class="relative w-full h-full p-4">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full knowledge-node"></div>
+<div class="absolute top-1/4 left-1/3 w-2 h-2 bg-secondary rounded-full knowledge-node"></div>
+<div class="absolute bottom-1/4 right-1/4 w-3 h-3 bg-tertiary rounded-full knowledge-node"></div>
+<div class="absolute top-1/3 right-1/3 w-2 h-2 bg-primary/60 rounded-full knowledge-node"></div>
+<svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewbox="0 0 100 100">
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="33" y1="50" y2="25"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="75" y1="50" y2="75"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="66" y1="50" y2="33"></line>
+</svg>
+</div>
+</div>
+<p class="text-label-md text-on-surface-variant italic">当前笔记与 “认知心理学” 存在 4 个双向链接。</p>
+</div>
+<!-- Notes List -->
+<div class="md:col-span-2 space-y-6">
+<!-- Note Item 1 -->
+<article class="group bg-surface-container-low hover:bg-surface-container p-6 rounded-2xl border border-outline-variant/5 transition-all duration-300">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">认知科学</span>
+<span class="px-3 py-0.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">方法论</span>
+</div>
+<time class="text-label-md text-outline">12月04日</time>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors mb-3">构建第二大脑：关于数字花园的哲学思考</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-2 mb-4 leading-relaxed">
+                            数字花园不仅仅是一个信息存储库，它更是一个有生命的、不断演化的认知生态系统。在这里，想法被播种，通过不断的链接与回顾得到灌溉...
+                        </p>
+<div class="flex items-center gap-6 text-label-md text-outline">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>8 min read</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">link</span>
+<span>12 backlinks</span>
+</div>
+</div>
+</article>
+<!-- Note Item 2 -->
+<article class="group bg-surface-container-low hover:bg-surface-container p-6 rounded-2xl border border-outline-variant/5 transition-all duration-300">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-0.5 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">读书笔记</span>
+</div>
+<time class="text-label-md text-outline">11月28日</time>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors mb-3">《禅与摩托车维修艺术》：良质的追寻</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-2 mb-4 leading-relaxed">
+                            当我们在修理摩托车时，我们实际上是在修理我们自己。良质（Quality）无法被定义，但当我们感知到它时，我们便进入了某种心流状态...
+                        </p>
+<div class="flex items-center gap-6 text-label-md text-outline">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>15 min read</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">link</span>
+<span>3 backlinks</span>
+</div>
+</div>
+</article>
+<!-- Note Item 3 (Image Featured) -->
+<article class="group bg-surface-container-low hover:bg-surface-container p-6 rounded-2xl border border-outline-variant/5 transition-all duration-300">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-surface-variant rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A warm, atmospheric minimalist workspace with a single vintage desk lamp casting a soft amber glow over an open paper notebook and a wooden pen. The background is a soft-focus library with shelves of aged books, creating a cozy and scholarly organic minimalism aesthetic with earth tones and soft textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2iTc9H4S2Kh9sRzi7Q0IeWUzHifJ18QqI_bsWR7sV-NW3ZSsh204wuq9JdMjSqg-QQPfbPz1poDQSnjliM8Z9YL8_yMnseV9v9C5qWnvRQ_3erwa2hb_z9XolTE3tHnVBcv0npWFc9aOTLGQCX6eOG9qwCO1kH98c8x61WjS2g9umFKZgPOrnGlkApCAQp0vac0a_DWPATUA1P2b_caqZSo3bbn7_QSRiUyDcJilwkGPVVVkNKcZslosQ0BrevHl_G8NZQMm6mRYH"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-0.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">生活美学</span>
+</div>
+<time class="text-label-md text-outline">11月15日</time>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors mb-3">纸张的触感：在数字时代坚持手写的意义</h3>
+<div class="flex items-center gap-6 text-label-md text-outline">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>5 min read</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">link</span>
+<span>8 backlinks</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Footer Shell -->
+<footer class="mt-24 py-12 border-t border-outline-variant/10 flex flex-col items-center justify-center gap-4">
+<div class="flex gap-8">
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">隐私政策</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">使用手册</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">开源协议</a>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-80">© 2024 数字花园 · 保持好奇心</p>
+</footer>
+</div>
+</main>
+<!-- Floating Action Button Contextual (Mobile/Desktop) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50 md:hidden">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<script>
+        // Micro-interactions for the knowledge graph mockup
+        document.querySelectorAll('.knowledge-node').forEach(node => {
+            node.addEventListener('mouseover', () => {
+                node.style.boxShadow = '0 0 15px currentColor';
+            });
+            node.addEventListener('mouseout', () => {
+                node.style.boxShadow = 'none';
+            });
+        });
+
+        // Add subtle animation to note articles on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('article').forEach(article => {
+            article.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(article);
+        });
+    </script>
+</body></html>
