@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知识库 | 78ykjs</title>
+  <meta name="description" content="78ykjs 的个人知识库，支持搜索、子域筛选、收藏、详情查看和本地条目添加。">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <div class="kb-app">
+    <aside class="kb-sidebar">
+      <a class="kb-logo" href="index.html">
+        <span>78</span>
+        <strong>知识库<small>My Knowledge</small></strong>
+      </a>
+      <nav class="kb-nav" aria-label="Knowledge sections">
+        <button class="active" type="button" data-domain="all">全部知识</button>
+        <button type="button" data-domain="github">GitHub 搭建</button>
+        <button type="button" data-domain="thesis">毕业论文</button>
+        <button type="button" data-domain="wind">风电故障诊断</button>
+        <button type="button" data-domain="data">数据实验</button>
+        <button type="button" data-domain="literature">文献检索</button>
+        <button type="button" data-domain="automation">自动化脚本</button>
+        <button type="button" data-domain="favorites">我的收藏</button>
+      </nav>
+      <div class="kb-sidebar-foot">
+        <a href="index.html">返回主页</a>
+        <a href="README.md">README</a>
+      </div>
+    </aside>
+
+    <main class="kb-main">
+      <header class="kb-topbar">
+        <div>
+          <p>Knowledge Desk</p>
+          <h1>我的知识库</h1>
+        </div>
+        <div class="kb-actions">
+          <button type="button" id="exportButton">导出 JSON</button>
+          <button class="primary" type="button" id="openAddButton">新增知识</button>
+        </div>
+      </header>
+
+      <section class="kb-search-panel">
+        <div class="mode-tabs" role="tablist" aria-label="View mode">
+          <button class="active" type="button" data-type="all">全部</button>
+          <button type="button" data-type="note">笔记</button>
+          <button type="button" data-type="project">项目</button>
+          <button type="button" data-type="resource">资源</button>
+          <button type="button" data-type="tool">工具</button>
+        </div>
+        <label class="kb-search">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="搜索：论文格式、Pages 部署、数据匹配、风电故障诊断">
+        </label>
+      </section>
+
+      <section class="kb-stats" aria-label="Statistics">
+        <article><strong id="totalCount">0</strong><span>知识条目</span></article>
+        <article><strong id="domainCount">0</strong><span>子域</span></article>
+        <article><strong id="favoriteCount">0</strong><span>收藏</span></article>
+        <article><strong id="customCount">0</strong><span>本地新增</span></article>
+      </section>
+
+      <section class="domain-grid" id="domainGrid" aria-label="Sub domains"></section>
+
+      <section class="kb-toolbar">
+        <h2 id="resultTitle">全部知识</h2>
+        <select id="sortSelect" aria-label="Sort knowledge">
+          <option value="priority">按优先级</option>
+          <option value="title">按标题</option>
+          <option value="updated">按更新时间</option>
+        </select>
+      </section>
+
+      <section class="knowledge-grid" id="knowledgeGrid" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <dialog class="detail-dialog" id="detailDialog">
+    <button class="dialog-close" type="button" id="closeDetailButton">×</button>
+    <div id="detailContent"></div>
+  </dialog>
+
+  <dialog class="detail-dialog add-dialog" id="addDialog">
+    <button class="dialog-close" type="button" id="closeAddButton">×</button>
+    <form id="addForm">
+      <h2>新增知识</h2>
+      <label>标题<input name="title" required></label>
+      <label>子域
+        <select name="domain">
+          <option value="github">GitHub 搭建</option>
+          <option value="thesis">毕业论文</option>
+          <option value="wind">风电故障诊断</option>
+          <option value="data">数据实验</option>
+          <option value="literature">文献检索</option>
+          <option value="automation">自动化脚本</option>
+        </select>
+      </label>
+      <label>类型
+        <select name="type">
+          <option value="note">笔记</option>
+          <option value="project">项目</option>
+          <option value="resource">资源</option>
+          <option value="tool">工具</option>
+        </select>
+      </label>
+      <label>标签<input name="tags" placeholder="用逗号分隔，例如：论文,格式,模板"></label>
+      <label>摘要<textarea name="summary" required></textarea></label>
+      <label>关键点<textarea name="points" placeholder="每行一个关键点"></textarea></label>
+      <button class="primary" type="submit">保存到本地</button>
+    </form>
+  </dialog>
+
+  <script src="assets/js/knowledge.js"></script>
+</body>
+</html>

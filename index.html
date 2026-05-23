@@ -3,155 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>78ykjs 知识工作台</title>
-  <meta name="description" content="78ykjs 的个人知识主页，整理学习、项目、资源、论文阅读和工具方法。">
+  <title>78ykjs | 个人知识库</title>
+  <meta name="description" content="78ykjs 的个人知识库入口。">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="#top" aria-label="78ykjs home">
-        <span class="brand-icon">78</span>
-        <span>78ykjs<small>Knowledge Desk</small></span>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="active" href="#top"><span>✦</span>知识首页</a>
-        <a href="#search"><span>⌕</span>知识检索</a>
-        <a href="#topics"><span>▦</span>主题卡片</a>
-        <a href="#projects"><span>◇</span>项目实践</a>
-        <a href="#resources"><span>▤</span>资源工具</a>
-        <a href="#timeline"><span>◎</span>学习路径</a>
-      </nav>
-
-      <div class="sidebar-footer">
-        <a class="ghost-button" href="README.md">README</a>
-        <a class="solid-button" href="https://github.com/78ykjs">GitHub</a>
+<body class="home-page">
+  <main class="home-shell">
+    <nav class="home-nav" aria-label="Home">
+      <a class="home-brand" href="index.html">78ykjs</a>
+      <div>
+        <a href="knowledge.html">知识库</a>
+        <a href="https://github.com/78ykjs">GitHub</a>
       </div>
-    </aside>
+    </nav>
 
-    <main class="workspace" id="top">
-      <header class="topbar">
-        <a href="#resources">文风：学术</a>
-        <a href="#projects">反馈</a>
-        <a class="join" href="https://github.com/78ykjs">进入主页</a>
-      </header>
+    <section class="home-hero">
+      <p class="home-kicker">Personal Knowledge Base</p>
+      <h1>把我的学习、项目和论文资料，整理成一个可检索的知识库。</h1>
+      <p>这里不做复杂门户。主页只负责带你进入知识库，真正的内容、子域、搜索、筛选和收藏都在知识库里。</p>
+      <a class="enter-button" href="knowledge.html">进入知识库</a>
+    </section>
 
-      <section class="hero" id="search">
-        <div class="hero-logo" aria-hidden="true"></div>
-        <h1>78 知识工作台</h1>
-        <p>把学习、项目和资料整理成看得见的知识地图。</p>
-
-        <div class="switch">
-          <button class="selected" type="button">知识</button>
-          <button type="button">工具</button>
-        </div>
-
-        <form class="search-box" action="#topics">
-          <span class="magnifier">⌕</span>
-          <input type="search" placeholder="试试输入：GitHub Pages、论文阅读、项目复盘、自动化">
-          <strong>AI 帮你找</strong>
-          <button type="submit" aria-label="Search">↑</button>
-        </form>
-      </section>
-
-      <section class="content-band" id="topics">
-        <div class="section-head">
-          <h2>知识探索 <span>156</span></h2>
-          <h2>工具探索 <span class="soft">48</span></h2>
-        </div>
-
-        <div class="filters">
-          <a class="selected" href="#topics">全部领域</a>
-          <a href="#topics">软件工程</a>
-          <a href="#topics">数据处理</a>
-          <a href="#topics">论文阅读</a>
-          <a href="#topics">自动化</a>
-          <a href="#topics">更多⌄</a>
-          <a class="selected" href="#topics">全部水平</a>
-          <a href="#topics">入门</a>
-          <a href="#topics">进阶</a>
-        </div>
-
-        <div class="card-grid">
-          <article class="topic-card">
-            <header><h3>知识库维护</h3><span>知识点</span></header>
-            <div class="chips"><em>方法论</em><em>入门</em></div>
-            <b>242</b>
-            <p>收件箱｜笔记卡片｜主题地图｜资源清单｜模板复用｜每周整理</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>GitHub Pages</h3><span>工具链</span></header>
-            <div class="chips"><em>工程</em><em>实践</em></div>
-            <b>205</b>
-            <p>静态主页｜Actions 发布｜分支部署｜README 美化｜访问路径</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>项目复盘</h3><span>知识点</span></header>
-            <div class="chips"><em>项目</em><em>进阶</em></div>
-            <b>256</b>
-            <p>目标定义｜问题排查｜过程记录｜结果验证｜经验沉淀｜改进清单</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>论文阅读</h3><span>知识点</span></header>
-            <div class="chips"><em>研究</em><em>学术</em></div>
-            <b>238</b>
-            <p>研究问题｜核心方法｜实验设计｜结论提炼｜引用材料｜疑问追踪</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>自动化工具</h3><span>工具链</span></header>
-            <div class="chips"><em>脚本</em><em>效率</em></div>
-            <b>236</b>
-            <p>批处理｜数据清理｜格式转换｜任务记录｜环境配置｜重复流程</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>软件工程</h3><span>领域</span></header>
-            <div class="chips"><em>代码</em><em>长期</em></div>
-            <b>219</b>
-            <p>项目结构｜代码质量｜测试验证｜版本管理｜协作流程｜发布记录</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>数据实验</h3><span>知识点</span></header>
-            <div class="chips"><em>数据</em><em>实验</em></div>
-            <b>254</b>
-            <p>数据清洗｜实验记录｜结果复现｜异常检查｜图表输出｜报告整理</p>
-          </article>
-          <article class="topic-card">
-            <header><h3>写作模板</h3><span>工具</span></header>
-            <div class="chips"><em>Markdown</em><em>模板</em></div>
-            <b>258</b>
-            <p>通用笔记｜项目记录｜复盘总结｜文献阅读｜问题排查｜学习计划</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="split-band" id="projects">
-        <div>
-          <p class="eyebrow">Project Practice</p>
-          <h2>项目实践区</h2>
-          <p>这里以后放真实项目、开发日志、截图、实验记录和复盘。主页先提供入口结构，内容会随着项目推进逐步补齐。</p>
-        </div>
-        <div class="project-list">
-          <article><span>Active</span><strong>个人知识主页重构</strong><p>重新设计页面结构和视觉系统。</p></article>
-          <article><span>Next</span><strong>学习资料索引</strong><p>整理论文、工具、网站与常用模板。</p></article>
-          <article><span>Review</span><strong>项目复盘沉淀</strong><p>把踩坑过程转成可复用经验。</p></article>
-        </div>
-      </section>
-
-      <section class="resource-band" id="resources">
-        <div class="resource-card"><h3>模板</h3><p>笔记、项目、复盘、论文阅读。</p></div>
-        <div class="resource-card"><h3>工具</h3><p>GitHub、Markdown、自动化脚本。</p></div>
-        <div class="resource-card"><h3>资源</h3><p>官方文档、论文资料、课程网站。</p></div>
-        <div class="resource-card"><h3>输出</h3><p>文章、报告、项目记录、知识地图。</p></div>
-      </section>
-
-      <section class="timeline" id="timeline">
-        <h2>学习路径</h2>
-        <div class="timeline-row"><span>01</span><p><strong>先记录</strong>：任何想法先进入工作台，不急着分类。</p></div>
-        <div class="timeline-row"><span>02</span><p><strong>再整理</strong>：把有价值的内容整理成卡片、项目或资源。</p></div>
-        <div class="timeline-row"><span>03</span><p><strong>后复用</strong>：把反复出现的问题沉淀为模板和清单。</p></div>
-      </section>
-    </main>
-  </div>
+    <section class="home-strip" aria-label="Knowledge domains">
+      <span>GitHub 搭建</span>
+      <span>毕业论文</span>
+      <span>风电故障诊断</span>
+      <span>数据实验</span>
+      <span>文献检索</span>
+      <span>自动化脚本</span>
+    </section>
+  </main>
 </body>
 </html>
