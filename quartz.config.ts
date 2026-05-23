@@ -3,7 +3,7 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "沈国栋的知识库",
+    pageTitle: "78ykjs Knowledge Base",
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
