@@ -33,9 +33,10 @@ jobs:
         run: |
           rm -rf _site
           mkdir _site
-          cp index.html _site/index.html
+          cp *.html _site/
           cp DESIGN.md _site/DESIGN.md
           cp .nojekyll _site/.nojekyll
+          cp -R assets _site/assets
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
