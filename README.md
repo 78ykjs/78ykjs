@@ -17,6 +17,7 @@
 ## 博客入口
 
 - [静态博客首页](index.html)
+- [知识百科首页](sciencepedia.html)
 - GitHub Pages 地址：`https://78ykjs.github.io/78ykjs/`
 
 ## Profile Cards
