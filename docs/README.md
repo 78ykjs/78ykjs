@@ -4,12 +4,14 @@
 
 ## 快速入口
 
-- [Inbox](inbox/README.md)：先记录，再整理。
-- [Notes](notes/README.md)：沉淀后的知识卡片。
-- [Projects](projects/README.md)：项目过程、成果、问题和复盘。
-- [Areas](areas/README.md)：长期关注领域和能力建设。
-- [Resources](resources/README.md)：外部资料、论文、书籍、链接和工具。
-- [Templates](templates/README.md)：常用写作模板。
+| 分区 | 用途 | 精装页面 | Markdown |
+| --- | --- | --- | --- |
+| Inbox | 先记录，再整理 | [打开](../sections/inbox.html) | [README](inbox/README.md) |
+| Notes | 沉淀后的知识卡片 | [打开](../sections/notes.html) | [README](notes/README.md) |
+| Projects | 项目过程、成果、问题和复盘 | [打开](../sections/projects.html) | [README](projects/README.md) |
+| Areas | 长期关注领域和能力建设 | [打开](../sections/areas.html) | [README](areas/README.md) |
+| Resources | 外部资料、论文、书籍、链接和工具 | [打开](../sections/resources.html) | [README](resources/README.md) |
+| Templates | 常用写作模板 | [打开](../sections/templates.html) | [README](templates/README.md) |
 
 ## 推荐工作流
 
@@ -39,3 +41,12 @@ YYYY-MM-DD-topic.md
 - 保留来源和上下文，方便以后追溯。
 - 先写清楚，再追求完整。
 - 能复用的经验要沉淀为模板、清单或步骤。
+
+## 分区关系
+
+```text
+Inbox -> Notes -> Areas
+Inbox -> Projects -> Review -> Notes
+Resources -> Notes / Projects / Areas
+Templates -> Notes / Projects / Reviews / Papers
+```

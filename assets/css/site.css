@@ -362,6 +362,141 @@ h3 {
   margin: 24px 0;
 }
 
+.section-hero {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.section-hero.accent-sky {
+  border-top: 5px solid var(--link);
+}
+
+.section-hero.accent-emerald {
+  border-top: 5px solid var(--green);
+}
+
+.section-hero.accent-amber {
+  border-top: 5px solid var(--amber);
+}
+
+.section-hero.accent-violet {
+  border-top: 5px solid #7c3aed;
+}
+
+.section-hero.accent-rose {
+  border-top: 5px solid var(--red);
+}
+
+.section-hero.accent-gray {
+  border-top: 5px solid #4b5563;
+}
+
+.section-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--soft);
+}
+
+.section-panel h2 {
+  margin-top: 0;
+}
+
+.process-list,
+.feature-list,
+.map-list,
+.template-list {
+  display: grid;
+  gap: 14px;
+}
+
+.process-list div,
+.feature-list article,
+.map-list div,
+.template-list a {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+}
+
+.process-list strong,
+.template-list strong {
+  display: block;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.process-list span,
+.template-list span {
+  color: #4b5563;
+}
+
+.feature-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feature-list h3 {
+  margin-top: 0;
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-weight: 700;
+  min-height: 70px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 12px;
+}
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kanban div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--soft);
+}
+
+.kanban h3 {
+  margin-top: 0;
+}
+
+.map-list div {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 4px 14px;
+}
+
+.map-list span {
+  grid-row: span 2;
+  color: var(--link);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.map-list p {
+  margin: 0;
+  color: #4b5563;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -486,6 +621,12 @@ h3 {
   }
 
   .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-list,
+  .compact-grid,
+  .kanban {
     grid-template-columns: 1fr;
   }
 

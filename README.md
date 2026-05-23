@@ -32,12 +32,12 @@
 ## 知识库导航
 
 - [知识库首页](docs/README.md)
-- [收件箱](docs/inbox/README.md)：临时想法、待整理资料、碎片记录
-- [笔记](docs/notes/README.md)：已经整理过的知识卡片
-- [项目](docs/projects/README.md)：项目记录、开发过程、复盘总结
-- [领域](docs/areas/README.md)：长期关注的方向与能力地图
-- [资源](docs/resources/README.md)：书籍、论文、网站、工具和参考资料
-- [模板](docs/templates/README.md)：笔记、项目、复盘和文献阅读模板
+- [收件箱](sections/inbox.html)：临时想法、待整理资料、碎片记录
+- [笔记](sections/notes.html)：已经整理过的知识卡片
+- [项目](sections/projects.html)：项目记录、开发过程、复盘总结
+- [领域](sections/areas.html)：长期关注的方向与能力地图
+- [资源](sections/resources.html)：书籍、论文、网站、工具和参考资料
+- [模板](sections/templates.html)：笔记、项目、复盘和文献阅读模板
 
 ## 当前关注
 
