@@ -1,7 +1,8 @@
 ---
 title: 读书笔记
 date: 2026-05-23
-tags: [读书笔记]
+tags:
+  - 读书笔记
 draft: false
 ---
 

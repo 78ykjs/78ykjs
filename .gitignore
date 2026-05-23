@@ -5,6 +5,8 @@ Desktop.ini
 # Editors
 .vscode/
 .idea/
+.obsidian/
+content/.obsidian/
 
 # Logs
 *.log
