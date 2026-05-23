@@ -40,6 +40,7 @@ jobs:
           cp DESIGN.md _site/DESIGN.md
           cp .nojekyll _site/.nojekyll
           cp -R stitch-screens _site/stitch-screens
+          cp -R assets _site/assets
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
