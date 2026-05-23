@@ -9,6 +9,13 @@ const domains = {
 const seedItems = [];
 
 const typeNames = { note: "笔记", project: "项目", resource: "资源", tool: "工具" };
+
+if (localStorage.getItem("kb:schema") !== "empty-v2") {
+  localStorage.removeItem("kb:custom");
+  localStorage.removeItem("kb:favorites");
+  localStorage.setItem("kb:schema", "empty-v2");
+}
+
 const state = {
   domain: "all",
   type: "all",
@@ -142,6 +149,20 @@ document.querySelector("#sortSelect").addEventListener("change", event => {
 document.querySelector("#closeDetailButton").addEventListener("click", () => document.querySelector("#detailDialog").close());
 document.querySelector("#openAddButton").addEventListener("click", () => document.querySelector("#addDialog").showModal());
 document.querySelector("#closeAddButton").addEventListener("click", () => document.querySelector("#addDialog").close());
+document.querySelector("#clearButton").addEventListener("click", () => {
+  state.custom = [];
+  state.favorites.clear();
+  localStorage.removeItem("kb:custom");
+  localStorage.removeItem("kb:favorites");
+  localStorage.setItem("kb:schema", "empty-v2");
+  state.domain = "all";
+  state.type = "all";
+  state.query = "";
+  document.querySelector("#searchInput").value = "";
+  document.querySelectorAll("[data-domain]").forEach(button => button.classList.toggle("active", button.dataset.domain === "all"));
+  document.querySelectorAll("[data-type]").forEach(button => button.classList.toggle("active", button.dataset.type === "all"));
+  render();
+});
 document.querySelector("#exportButton").addEventListener("click", () => {
   const data = JSON.stringify(allItems(), null, 2);
   const blob = new Blob([data], { type: "application/json" });
