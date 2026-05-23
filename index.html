@@ -1,32 +1,353 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>数字花园 - 首页</title>
-  <link rel="stylesheet" href="assets/css/garden.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数字花园 - 首页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e9e1dc",
+                        "secondary-fixed": "#d3e8d5",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb5a1",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-container": "#f5ece7",
+                        "surface-bright": "#fff8f5",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb77b",
+                        "on-tertiary-fixed-variant": "#6d3900",
+                        "surface-container-high": "#efe6e2",
+                        "primary-fixed": "#ffdbd1",
+                        "surface-tint": "#974730",
+                        "secondary-fixed-dim": "#b7ccb9",
+                        "on-primary-fixed-variant": "#79301b",
+                        "on-error": "#ffffff",
+                        "primary-container": "#b35c44",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#546758",
+                        "on-secondary-fixed-variant": "#394b3d",
+                        "on-tertiary-container": "#fffcff",
+                        "inverse-surface": "#34302c",
+                        "on-tertiary-fixed": "#2e1500",
+                        "inverse-on-surface": "#f8efea",
+                        "error": "#ba1a1a",
+                        "outline": "#88726d",
+                        "on-primary-fixed": "#3b0900",
+                        "on-secondary-fixed": "#0e1f13",
+                        "background": "#fff8f5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a5662b",
+                        "secondary": "#506354",
+                        "primary-fixed-dim": "#ffb5a1",
+                        "tertiary": "#884e14",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#d0e5d2",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-surface-variant": "#55433e",
+                        "on-background": "#1e1b18",
+                        "outline-variant": "#dbc1ba",
+                        "on-surface": "#1e1b18",
+                        "surface-dim": "#e1d8d4",
+                        "tertiary-fixed": "#ffdcc2",
+                        "primary": "#94442e",
+                        "surface": "#fff8f5",
+                        "on-primary-container": "#fffcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max-width": "900px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Noto Serif SC"],
+                        "headline-lg": ["Noto Serif SC"],
+                        "display-lg": ["Noto Serif SC"],
+                        "body-lg": ["Noto Sans SC"],
+                        "body-md": ["Noto Sans SC"],
+                        "headline-lg-mobile": ["Noto Serif SC"],
+                        "label-md": ["Noto Sans SC"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "44px", "fontWeight": "600" }],
+                        "display-lg": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "38px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>body {
+    background-color: #fff8f5;
+    color: #1e1b18
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    vertical-align: middle
+    }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem
+    }
+.paper-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCsZPQ-KryPbUTBp37eiI_vNAGISpidyqzCrw_yTMQ0O7m19Zy4cHqg2GKcE-uhIxZqNuKsgoDbREEDZwOVp9nPGoC1RVYXjHBuOq_X2UW-wmtGU0v-4GjKanm3AVQ7gBobrT9p5lNWS5RkKyf1ocE3_S2o6pPAFMK1zna1o0U43aEUWSCkUXaeEFp77oSKLRFRdvrbmZSyzsduSEZvToX_OCgeScSuzSFD_9dti9u_HNT4aWQ5nnwf-8WDhoRlmui-oB7ZQtnC2X9B)
+    }</style>
 </head>
-<body>
-  <div class="shell">
-    <aside class="sidebar">
-      <a class="brand" href="index.html"><strong>数字花园</strong><span>78ykjs.github.io</span></a>
-      <div class="nav-group"><small>导航</small><nav class="nav">
-        <a class="active" href="index.html">首页</a><a href="library.html">所有笔记 <b>6</b></a><a href="archive.html">归档</a><a href="updates.html">更新</a><a href="graph.html">知识图谱</a>
-      </nav></div>
-      <div class="nav-group"><small>分类</small><nav class="nav">
-        <a href="deep-learning.html">深度学习 <b>1</b></a><a href="engineering.html">工程实践 <b>2</b></a><a href="reading.html">读书笔记 <b>1</b></a><a href="papers.html">论文精读 <b>1</b></a><a href="essays.html">随笔 <b>1</b></a>
-      </nav></div>
-      <div class="tag-cloud"><a href="tags.html">域适应</a><a href="tags.html">PyTorch</a><a href="tags.html">论文</a><a href="tags.html">调试</a></div>
-    </aside>
-    <main class="main">
-      <header class="topbar"><a href="index.html">数字花园</a><nav><a href="random.html">随机</a><a href="archive.html">归档</a><a href="updates.html">更新</a><a href="help.html">帮助</a></nav></header>
-      <section class="hero"><div class="kicker">Warmth & Wisdom</div><h1>欢迎来到，数字花园</h1><p class="lead">这是一个属于思想的栖息地。像打理真实花园一样，我在这里播种灵感、修剪逻辑、灌溉知识。每一篇笔记都是一株正在生长的植物。</p><div class="actions"><a class="btn primary" href="library.html">进入知识库</a><a class="btn" href="graph.html">查看知识图谱</a></div></section>
-      <section class="section"><h2>探索领域</h2><div class="grid"><a class="card" href="deep-learning.html"><h3>深度学习</h3><p>域适应、无源域适应、注意力机制与实验记录。</p></a><a class="card" href="engineering.html"><h3>工程实践</h3><p>PyTorch 技巧、调试经验、复现清单与工具流程。</p></a><a class="card" href="papers.html"><h3>论文精读</h3><p>研究问题、方法结构、实验设计与可引用结论。</p></a></div></section>
-      <section class="section"><h2>最近更新</h2><div class="note-list" data-notes></div></section>
-      <footer class="footer"><a href="privacy.html">隐私政策</a><a href="manual.html">使用手册</a><a href="license.html">开源协议</a><span>© 2026 数字花园</span></footer>
-    </main>
-  </div>
-  <script src="assets/js/garden.js"></script>
-</body>
-</html>
+<body class="font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-sm border-b border-outline-variant/30">
+<nav class="flex justify-between items-center px-margin-desktop h-16 max-w-[900px] mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">数字花园</div>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-primary border-b-2 border-primary pb-1" href="index.html">首页</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="random.html">随机</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="archive.html">归档</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="updates.html">更新</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer">settings</span>
+</div>
+</nav>
+</header>
+<!-- Sidebar (Hidden on Mobile) -->
+<aside class="hidden lg:flex flex-col p-6 gap-4 h-screen w-sidebar-width fixed left-0 top-0 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/20 pt-20">
+<div class="flex items-center gap-3 mb-4">
+<img alt="用户头像" class="w-12 h-12 rounded-full object-cover border border-outline-variant" data-alt="A detailed portrait of a scholarly person with a gentle expression, set against a backdrop of a warm-toned library with soft afternoon light filtering through windows. The visual style is organic and minimalist, emphasizing natural textures, paper-like colors, and a serene, contemplative atmosphere consistent with a digital garden aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEyVAgFOoyF2rGdI7aesf6MYVoJVoWjv7WT8PflWCfifVAM_X0mpIe30SRMniZCHoJqzPW2Gg4BLFxmKyJMmYeeV56Sb7coy1HxEAjak7WG8ByO_-rtTC8CC92-Cf-60DwJHsvG2Eavk1h2Tlajlg81oMLRnbRccsR2h9RVKRLe5NOqjVaBg3kdQC0mT_X4Su9pU2jV4WzNppbWYx18Juefd4hyVtT6Oghe2fgb8KDN94GT5Odj8KFLs-WWueclG1s1R-T3H3RAyTR"/>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface text-base">书斋主人</div>
+<div class="font-label-md text-label-md text-on-surface-variant">随手记，时常温</div>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-xl font-bold Active: scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">add</span>
+            新建笔记
+        </button>
+<nav class="flex flex-col gap-1 mt-6">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span>首页</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200" href="library.html">
+<span class="material-symbols-outlined">library_books</span>
+<span>知识库</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200" href="graph.html">
+<span class="material-symbols-outlined">account_tree</span>
+<span>知识图谱</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-all duration-200" href="tags.html">
+<span class="material-symbols-outlined">sell</span>
+<span>标签</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="trash.html">
+<span class="material-symbols-outlined">delete</span>
+<span>回收站</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="help.html">
+<span class="material-symbols-outlined">help_outline</span>
+<span>帮助</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-sidebar-width px-margin-mobile md:px-margin-desktop py-12 max-w-[900px] mx-auto min-h-screen">
+<!-- Hero Section -->
+<section class="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+<h1 class="font-display-lg text-display-lg mb-6 text-on-surface">欢迎来到，数字花园</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl mb-8">
+                这是一个属于思想的栖息地。像打理真实的花园一样，我在这里播种灵感、修剪逻辑、灌溉知识。每一篇笔记都是一株正在生长的植物，随着时间的流逝，它们将交织成一片茂盛的智慧森林。
+            </p>
+<div class="flex gap-4">
+<span class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">🌱 正在萌芽 12</span>
+<span class="inline-flex items-center px-4 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">🌳 郁郁葱葱 45</span>
+</div>
+</section>
+<!-- Featured Topics (Bento Grid) -->
+<section class="mb-20">
+<h2 class="font-headline-lg text-headline-lg mb-8 flex items-center gap-3">
+<span class="w-8 h-[2px] bg-primary"></span>
+                专题耕耘
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Philosophy -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-high p-8 transition-all hover:bg-surface-variant border border-outline-variant/10">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl">auto_stories</span>
+<h3 class="font-headline-md text-headline-md mb-2">哲学</h3>
+<p class="text-on-surface-variant font-body-md text-body-md opacity-80 mb-6">关于存在、逻辑与伦理的长线思考，从柏拉图到当代认知科学的对话。</p>
+<a class="inline-flex items-center gap-1 text-primary font-bold group-hover:gap-2 transition-all" href="library.html">
+                            进入探索 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+<!-- AI -->
+<div class="group relative overflow-hidden rounded-xl bg-secondary-container p-8 transition-all hover:opacity-90 border border-outline-variant/10">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-on-secondary-container mb-4 text-3xl">bolt</span>
+<h3 class="font-headline-md text-headline-md mb-2">人工智能</h3>
+<p class="text-on-secondary-container/80 font-label-md text-label-md">AGI、大语言模型与人类创造力的边界探索。</p>
+</div>
+</div>
+<!-- Cooking -->
+<div class="group relative overflow-hidden rounded-xl bg-tertiary-fixed p-8 transition-all hover:opacity-90 border border-outline-variant/10">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-on-tertiary-fixed mb-4 text-3xl">restaurant</span>
+<h3 class="font-headline-md text-headline-md mb-2">烹饪</h3>
+<p class="text-on-tertiary-fixed/80 font-label-md text-label-md">火候、香料与时间的化学反应，实验室里的美味实践。</p>
+</div>
+</div>
+<!-- More -->
+<div class="md:col-span-2 flex items-center justify-between px-8 py-6 rounded-xl border-2 border-dashed border-outline-variant/40 hover:border-primary/40 transition-colors cursor-pointer group">
+<span class="font-headline-md text-headline-md text-on-surface-variant">更多领域正在开垦...</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">add_circle</span>
+</div>
+</div>
+</section>
+<!-- Recently Tended -->
+<section class="mb-20">
+<h2 class="font-headline-lg text-headline-lg mb-8 flex items-center gap-3">
+<span class="w-8 h-[2px] bg-primary"></span>
+                最近更新
+            </h2>
+<div class="space-y-4">
+<!-- Note Item 1 -->
+<article class="paper-texture bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">《瓦尔登湖》中的数字极简主义</h4>
+<span class="font-label-md text-label-md text-on-surface-variant/50">2小时前</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2 mb-4">
+                        梭罗在瓦尔登湖畔的实践，在当下的碎片化时代依然具有震撼力。数字花园的本质，并非为了展示，而是为了在这片喧嚣中建立一个稳固的内心锚点...
+                    </p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md rounded">#哲学</span>
+<span class="px-2 py-0.5 bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md rounded">#读书笔记</span>
+</div>
+</article>
+<!-- Note Item 2 -->
+<article class="paper-texture bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">如何构建一个持久的第二大脑</h4>
+<span class="font-label-md text-label-md text-on-surface-variant/50">昨天</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2 mb-4">
+                        P.A.R.A 方法论与数字花园的有机结合。与其追求完美的分类，不如追求信息之间的自然连接。通过关联而非层级来组织我们的知识...
+                    </p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md rounded">#方法论</span>
+<span class="px-2 py-0.5 bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md rounded">#效率</span>
+</div>
+</article>
+<!-- Note Item 3 -->
+<article class="paper-texture bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">深度学习中的归纳偏置</h4>
+<span class="font-label-md text-label-md text-on-surface-variant/50">3天前</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2 mb-4">
+                        神经网络结构如何决定其泛化能力？从卷积层到 Transformer 的演进过程看先验知识是如何被硬编码进算法之中的...
+                    </p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-variant/40 text-on-surface-variant font-label-md text-label-md rounded">#人工智能</span>
+</div>
+</article>
+</div>
+<div class="mt-10 text-center">
+<button class="text-primary font-bold hover:underline decoration-2 underline-offset-4">查看所有笔记</button>
+</div>
+</section>
+<!-- Quote Block -->
+<blockquote class="my-16 border-l-4 border-primary pl-8 py-4 bg-surface-container/50 italic font-headline-md text-headline-md text-on-surface-variant/80">
+            “种一棵树最好的时间是十年前，其次是现在。”
+        </blockquote>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-outline-variant/10 bg-transparent lg:ml-sidebar-width">
+<div class="flex flex-col items-center justify-center gap-4 max-w-[900px] mx-auto">
+<div class="flex gap-6">
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="privacy.html">隐私政策</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="manual.html">使用手册</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="license.html">开源协议</a>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
+                © 2024 数字花园 · 保持好奇心
+            </p>
+</div>
+</footer>
+<!-- Mobile Bottom NavBar -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md flex justify-around items-center h-16 border-t border-outline-variant/20 z-50">
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">首页</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant/60">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-[10px]">库</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant/60">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="text-[10px]">图谱</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant/60">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">设置</span>
+</button>
+</div>
+<script>
+        // Atmospheric Micro-interaction: Subtle parallax on mouse move for "Featured Topics"
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.group');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const shiftX = (x - 0.5) * 10;
+                    const shiftY = (y - 0.5) * 10;
+                    const icon = card.querySelector('.material-symbols-outlined:not(.text-sm)');
+                    if (icon) {
+                        icon.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+                        icon.style.transition = 'transform 0.2s ease-out';
+                    }
+                }
+            });
+        });
+
+        // Greeting based on time
+        const hour = new Date().getHours();
+        const heroTitle = document.querySelector('h1');
+        let greeting = "欢迎来到，数字花园";
+        if (hour < 12) greeting = "晨安，数字花园";
+        else if (hour < 18) greeting = "午安，数字花园";
+        else greeting = "晚安，数字花园";
+        if(heroTitle) heroTitle.innerText = greeting;
+    </script>
+</body></html>
