@@ -1,5 +1,15 @@
 # 78ykjs
 
+<p align="center">
+  <a href="https://github.com/78ykjs"><img src="https://img.shields.io/badge/GitHub-78ykjs-111827?style=for-the-badge&logo=github" alt="GitHub"></a>
+  <a href="https://78ykjs.github.io/78ykjs/"><img src="https://img.shields.io/badge/Pages-Knowledge%20Base-2563eb?style=for-the-badge&logo=githubpages" alt="GitHub Pages"></a>
+  <img src="https://img.shields.io/badge/Notes-Markdown-059669?style=for-the-badge&logo=markdown" alt="Markdown">
+</p>
+
+<p align="center">
+  <strong>Build, learn, record.</strong>
+</p>
+
 这里是我的 GitHub 个人主页，也是我的公开个人知识库入口。
 
 我会把学习笔记、项目复盘、工具方法、论文资料、工程经验和长期主题整理在这里。这个仓库不追求一次性写完，而是作为一个可以持续生长、持续重构的数字花园。
@@ -7,7 +17,17 @@
 ## 博客入口
 
 - [静态博客首页](index.html)
-- GitHub Pages 启用后可通过仓库 Pages 地址访问。
+- GitHub Pages 地址：`https://78ykjs.github.io/78ykjs/`
+
+## Profile Cards
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=78ykjs&show_icons=true&theme=default&hide_border=true" alt="GitHub stats">
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=78ykjs&layout=compact&hide_border=true" alt="Top languages">
+</p>
 
 ## 知识库导航
 
