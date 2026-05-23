@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Deploy Quartz site to GitHub Pages
 
 on:
   push:
@@ -16,23 +16,57 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout knowledge content
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Checkout Quartz
+        uses: actions/checkout@v4
+        with:
+          repository: jackyzha0/quartz
+          ref: v4
+          path: quartz
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: quartz/package-lock.json
+
+      - name: Install dependencies
+        working-directory: quartz
+        run: npm ci
+
+      - name: Copy site content and config
+        shell: bash
+        run: |
+          rm -rf quartz/content
+          cp -R site/content quartz/content
+          cp site/quartz.config.ts quartz/quartz.config.ts
+          cp site/quartz.layout.ts quartz/quartz.layout.ts
+
+      - name: Build Quartz site
+        working-directory: quartz
+        run: npx quartz build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz/public
+
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

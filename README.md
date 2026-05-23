@@ -1,22 +1,41 @@
-# 78ykjs
+# 沈国栋的知识库
 
-一个简洁主页 + 功能型知识库。
+这是一个基于 Quartz v4 的个人知识库仓库。
 
-- 主页文件：[index.html](index.html)
-- 知识库文件：[knowledge.html](knowledge.html)
-- Pages 地址：`https://78ykjs.github.io/78ykjs/`
-- 风格目标：主页简洁，一键进入知识库；知识库承载搜索、筛选、收藏、新增和导出。
+## 工作流
 
-## 默认子域
+```text
+Obsidian / Markdown
+  -> content/
+  -> Quartz v4
+  -> GitHub Actions
+  -> GitHub Pages
+```
 
-- 知识笔记
-- 项目资料
-- 阅读摘录
-- 工具方法
-- 归档材料
+## 目录
 
-当前不内置任何知识条目，知识库内容由后续手动新增。
+- `content/`：知识库正文，直接用 Markdown 编写。
+- `quartz.config.ts`：Quartz 站点配置。
+- `quartz.layout.ts`：Quartz 页面布局配置。
+- `.github/workflows/pages.yml`：自动部署到 GitHub Pages。
 
-## 部署
+## 内容结构
 
-推送到 `main` 后由 GitHub Actions 发布到 GitHub Pages。
+```text
+content/
+├── index.md
+├── 深度学习/
+│   ├── 域适应/
+│   ├── 无源域适应/
+│   └── 注意力机制/
+├── 工程实践/
+│   ├── PyTorch技巧/
+│   └── 调试经验/
+├── 读书笔记/
+├── 论文精读/
+└── 随笔/
+```
+
+## 发布
+
+推送到 `main` 后，GitHub Actions 会自动拉取 Quartz v4、构建 `content/`，并发布到 GitHub Pages。

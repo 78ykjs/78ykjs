@@ -8,3 +8,9 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Quartz / Node
+node_modules/
+public/
+.quartz-cache/
+.cache/
